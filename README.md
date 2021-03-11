@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/hopex-hk/hopex_CSharp.svg?branch=main)](https://travis-ci.com/hopex-hk/hopex_CSharp)
+
 # Hopex C# SDK
 
 This is Hopex C# SDK, This is a lightweight .NET library, you can use import to your C# project and use this SDK to query all market data and trading.
