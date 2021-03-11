@@ -1,4 +1,5 @@
 ﻿using Hopex.SDK.Core.Client;
+using Hopex.SDK.Core.Invoker.Models;
 using Hopex.SDK.Core.Log;
 using Newtonsoft.Json;
 
@@ -9,7 +10,7 @@ namespace Hopex.SDK.Example.Example
         private static readonly PerformanceLogger _logger = PerformanceLogger.GetInstance();
 
 
-        private static readonly AccountClient _accountClient = new AccountClient();
+        private static readonly AccountClient _accountClient = new AccountClient(InvokerOption.ApiKey, InvokerOption.ApiSecret);
 
         public static void RunAll()
         {

@@ -1,16 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Hopex.SDK.Core.Invoker.HttpClients;
 using Hopex.SDK.Core.Invoker.Models.Commons;
-using Hopex.SDK.Core.Invoker.Services;
+
 using Hopex.SDK.Core.Models.Response.Market;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Hopex.SDK.Core.Client
 {
     public class MarketClient
     {
+        public MarketClient()
+        {
+
+        }
+
         /// <summary>
         /// 获取K线
         /// </summary>
@@ -21,7 +24,7 @@ namespace Hopex.SDK.Core.Client
         /// <returns></returns>
         public Task<GetKlineResponse> GetKlineAsync(string contractCode, long endTime, long startTime, string interval)
         {
-            return HttpRequest.Get<GetKlineResponse>("/api/v1/kline", new Dictionary<string, string>
+            return HopexClient.Get<GetKlineResponse>("/api/v1/kline", new Dictionary<string, string>
             {
                 {"contractCode", contractCode },
                 {"endTime",endTime.ToString() },
@@ -37,7 +40,7 @@ namespace Hopex.SDK.Core.Client
         /// <returns></returns>
         public Task<GetMarketTickerResponse> GetMarketTickerAsync(string contractCode)
         {
-            return HttpRequest.Get<GetMarketTickerResponse>("/api/v1/ticker", new Dictionary<string, string>
+            return HopexClient.Get<GetMarketTickerResponse>("/api/v1/ticker", new Dictionary<string, string>
             {
                 {"contractCode", contractCode }
             }, false);
@@ -49,7 +52,7 @@ namespace Hopex.SDK.Core.Client
         /// <returns></returns>
         public Task<List<GetMarketsResponse>> GetMarketsAsync()
         {
-            return HttpRequest.Get<List<GetMarketsResponse>>("/api/v1/markets", null, false);
+            return HopexClient.Get<List<GetMarketsResponse>>("/api/v1/markets", null, false);
         }
 
         /// <summary>
@@ -60,7 +63,7 @@ namespace Hopex.SDK.Core.Client
         /// <returns></returns>
         public Task<List<GetTradesResponse>> GetTradesAsync(string contractCode, int pageSize)
         {
-            return HttpRequest.Get<List<GetTradesResponse>>("/api/v1/trades", new Dictionary<string, string>
+            return HopexClient.Get<List<GetTradesResponse>>("/api/v1/trades", new Dictionary<string, string>
             {
                 {"contractCode", contractCode },
                 {"pageSize",pageSize.ToString() }
@@ -84,7 +87,7 @@ namespace Hopex.SDK.Core.Client
                 }
             };
 
-            return HttpRequest.Post<ApiRequestModel<dynamic>, PostQueryMarketDepthResponse>("/api/v1/depth", req, null, false);
+            return HopexClient.Post<ApiRequestModel<dynamic>, PostQueryMarketDepthResponse>("/api/v1/depth", req, null, false);
         }
 
     }

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Hopex.SDK.Core.Client;
+﻿using Hopex.SDK.Core.Client;
+using Hopex.SDK.Core.Invoker.Models;
 using Hopex.SDK.Core.Log;
 using Newtonsoft.Json;
 
@@ -13,7 +9,7 @@ namespace Hopex.SDK.Example.Example
     {
         private static readonly PerformanceLogger _logger = PerformanceLogger.GetInstance();
 
-        private static readonly WalletClient _walletClient = new WalletClient();
+        private static readonly WalletClient _walletClient = new WalletClient(InvokerOption.ApiKey, InvokerOption.ApiSecret);
 
         public static void RunAll()
         {

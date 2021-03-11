@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using Hopex.SDK.Core.Client;
+﻿using Hopex.SDK.Core.Client;
+using Hopex.SDK.Core.Invoker.Models;
 using Hopex.SDK.Core.Log;
 using Hopex.SDK.Core.Models;
-using Newtonsoft.Json;
-using System.Linq;
 using Hopex.SDK.Core.Models.Request.Trade;
-using Hopex.SDK.Core.Models.Response.Trade;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Hopex.SDK.Example.Example
 {
@@ -13,7 +13,7 @@ namespace Hopex.SDK.Example.Example
     {
         private static readonly PerformanceLogger _logger = PerformanceLogger.GetInstance();
 
-        private static readonly TradeClient _tradeClient = new TradeClient();
+        private static readonly TradeClient _tradeClient = new TradeClient(InvokerOption.ApiKey, InvokerOption.ApiSecret);
 
         private const string _contractCode = "BTCUSDT";
 

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
+using Hopex.SDK.Core.Invoker.HttpClients;
 using Hopex.SDK.Core.Invoker.Models.Commons;
-using Hopex.SDK.Core.Invoker.Services;
 using Hopex.SDK.Core.Models.Request.Trade;
 using Hopex.SDK.Core.Models.Response.Trade;
 
@@ -10,16 +10,25 @@ namespace Hopex.SDK.Core.Client
 {
     public class TradeClient
     {
+        private readonly string _apiKey;
+        private readonly string _apiSecret;
+
+        public TradeClient(string apiKey, string apiSecret)
+        {
+            _apiKey = apiKey;
+            _apiSecret = apiSecret;
+        }
+
         /// <summary>
         /// 获取活跃委托
         /// </summary>
         /// <param name="contractCode"></param>
         public Task<List<GetOpenOrdersResponse>> GetOpenOrdersAsync(string contractCode)
         {
-            return HttpRequest.Get<List<GetOpenOrdersResponse>>("/api/v1/order_info", new Dictionary<string, string>
+            return HopexClient.Get<List<GetOpenOrdersResponse>>("/api/v1/order_info", new Dictionary<string, string>
             {
                 {"contractCode", contractCode }
-            }, true);
+            }, true, _apiKey, _apiSecret);
         }
 
         /// <summary>
@@ -28,7 +37,7 @@ namespace Hopex.SDK.Core.Client
         /// <returns></returns>
         public Task<List<GetPositionsResponse>> GetPositionsAsync()
         {
-            return HttpRequest.Get<List<GetPositionsResponse>>("/api/v1/position", null, true);
+            return HopexClient.Get<List<GetPositionsResponse>>("/api/v1/position", null, true, _apiKey, _apiSecret);
         }
 
         /// <summary>
@@ -48,7 +57,7 @@ namespace Hopex.SDK.Core.Client
                 }
             };
 
-            return HttpRequest.Post<ApiRequestModel<dynamic>, bool>("/api/v1/cancel_condition_order", req, null, true);
+            return HopexClient.Post<ApiRequestModel<dynamic>, bool>("/api/v1/cancel_condition_order", req, null, true, _apiKey, _apiSecret);
         }
 
         /// <summary>
@@ -59,11 +68,11 @@ namespace Hopex.SDK.Core.Client
         /// <returns></returns>
         public Task<bool> CancelOrderAsync(string contractCode, long orderId)
         {
-            return HttpRequest.Get<bool>("/api/v1/cancel_order", new Dictionary<string, string>
+            return HopexClient.Get<bool>("/api/v1/cancel_order", new Dictionary<string, string>
             {
                 {"contractCode", contractCode},
                 {"orderId", orderId.ToString()}
-            }, true);
+            }, true, _apiKey, _apiSecret);
         }
 
         /// <summary>
@@ -92,7 +101,7 @@ namespace Hopex.SDK.Core.Client
                 }
             };
 
-            return HttpRequest.Post<ApiRequestModel<dynamic>, bool>("/api/v1/condition_order", req, null, true);
+            return HopexClient.Post<ApiRequestModel<dynamic>, bool>("/api/v1/condition_order", req, null, true, _apiKey, _apiSecret);
         }
 
         /// <summary>
@@ -116,7 +125,7 @@ namespace Hopex.SDK.Core.Client
                 }
             };
 
-            return HttpRequest.Post<ApiRequestModel<dynamic>, long>("/api/v1/order", req, null, true);
+            return HopexClient.Post<ApiRequestModel<dynamic>, long>("/api/v1/order", req, null, true, _apiKey, _apiSecret);
         }
 
         /// <summary>
@@ -133,11 +142,11 @@ namespace Hopex.SDK.Core.Client
                 Param = param
             };
 
-            return HttpRequest.Post<ApiRequestModel<QueryConditionOrdersRequest>, ListResultViewModel<QueryConditionOrdersResponse>>("/api/v1/condition_order_info", req, new Dictionary<string, string>
+            return HopexClient.Post<ApiRequestModel<QueryConditionOrdersRequest>, ListResultViewModel<QueryConditionOrdersResponse>>("/api/v1/condition_order_info", req, new Dictionary<string, string>
             {
                 { "page", page.ToString() },
                 { "limit", limit.ToString() }
-            }, true);
+            }, true, _apiKey, _apiSecret);
         }
 
         /// <summary>
@@ -154,11 +163,11 @@ namespace Hopex.SDK.Core.Client
                 Param = param
             };
 
-            return HttpRequest.Post<ApiRequestModel<QueryHistoryOrdersRequest>, ListResultViewModel<QueryHistoryOrdersResponse>>("/api/v1/order_history", req, new Dictionary<string, string>
+            return HopexClient.Post<ApiRequestModel<QueryHistoryOrdersRequest>, ListResultViewModel<QueryHistoryOrdersResponse>>("/api/v1/order_history", req, new Dictionary<string, string>
             {
                 { "page", page.ToString() },
                 { "limit", limit.ToString() }
-            }, true);
+            }, true, _apiKey, _apiSecret);
         }
 
         /// <summary>
@@ -175,11 +184,11 @@ namespace Hopex.SDK.Core.Client
                 Param = param
             };
 
-            return HttpRequest.Post<ApiRequestModel<QueryLiquidationHistoryRequest>, ListResultViewModel<QueryLiquidationHistoryResponse>>("/api/v1/liquidation_history", req, new Dictionary<string, string>
+            return HopexClient.Post<ApiRequestModel<QueryLiquidationHistoryRequest>, ListResultViewModel<QueryLiquidationHistoryResponse>>("/api/v1/liquidation_history", req, new Dictionary<string, string>
             {
                 { "page", page.ToString() },
                 { "limit", limit.ToString() }
-            }, true);
+            }, true, _apiKey, _apiSecret);
         }
 
         /// <summary>
@@ -198,7 +207,7 @@ namespace Hopex.SDK.Core.Client
                 }
             };
 
-            return HttpRequest.Post<ApiRequestModel<Dictionary<string, string>>, QueryOrderParasResponse>("/api/v1/get_orderParas", req, null, true);
+            return HopexClient.Post<ApiRequestModel<Dictionary<string, string>>, QueryOrderParasResponse>("/api/v1/get_orderParas", req, null, true, _apiKey, _apiSecret);
         }
 
         /// <summary>
@@ -210,12 +219,12 @@ namespace Hopex.SDK.Core.Client
         /// <returns></returns>
         public Task<decimal> SetLeverageAsync(string contractCode, int direct, decimal leverage)
         {
-            return HttpRequest.Get<decimal>("/api/v1/set_leverage", new Dictionary<string, string>
+            return HopexClient.Get<decimal>("/api/v1/set_leverage", new Dictionary<string, string>
             {
                 { "contractCode", contractCode },
                 { "direct", direct.ToString() },
                 { "leverage", leverage.ToString(CultureInfo.InvariantCulture) },
-            }, true);
+            }, true, _apiKey, _apiSecret);
         }
 
     }

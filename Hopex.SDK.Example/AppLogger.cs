@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Hopex.SDK.Core.Log;
+﻿using Hopex.SDK.Core.Log;
+using System;
 
 namespace Hopex.SDK.Example
 {

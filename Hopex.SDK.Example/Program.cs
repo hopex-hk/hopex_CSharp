@@ -1,6 +1,4 @@
-﻿using System;
-using Hopex.SDK.Core.Invoker.Models;
-using Hopex.SDK.Core.Log;
+﻿using Hopex.SDK.Core.Log;
 using Hopex.SDK.Example.Example;
 
 namespace Hopex.SDK.Example
@@ -32,15 +30,15 @@ namespace Hopex.SDK.Example
 
         static void RunAllRestExamples()
         {
-            AccountClientExample.RunAll();
+            //AccountClientExample.RunAll();
 
             HomeClientExample.RunAll();
 
             MarketClientExample.RunAll();
 
-            TradeClientExample.RunAll();
+            //TradeClientExample.RunAll();
 
-            WalletClientExample.RunAll();
+            //WalletClientExample.RunAll();
         }
     }
 }
