@@ -160,7 +160,7 @@ var statistResponse = client.GetIndexStatisticsAsync().Result;
 
 After that you can check the value of the response and define your own business logic. The example in this SDK assume the JSON data from API is valid and do a basic validation. To make your application robust, you'd better consider all the possibilities of the data returned from API.
 
-You can see it in **HttpRequest.cs**,api method invoker has rate limit,message means rate-limit exceed or hmac-sign  ret value is zero that means success,else fail
+You can see it in **HopexClient.cs**,api method invoker has rate limit,message means rate-limit exceed or hmac-sign  ret value is zero that means success,else fail
 
 ```csharp
 // Check the status of response
