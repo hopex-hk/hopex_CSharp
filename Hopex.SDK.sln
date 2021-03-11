@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hopex.SDK.Example", "Hopex.SDK.Example\Hopex.SDK.Example.csproj", "{D95206D3-C625-46D4-99E6-2F18BC380E31}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hopex.SDK.Core", "Hopex.SDK.Core\Hopex.SDK.Core.csproj", "{40542BAF-D558-4E18-96BA-28D0F16B62ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D95206D3-C625-46D4-99E6-2F18BC380E31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D95206D3-C625-46D4-99E6-2F18BC380E31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D95206D3-C625-46D4-99E6-2F18BC380E31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D95206D3-C625-46D4-99E6-2F18BC380E31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40542BAF-D558-4E18-96BA-28D0F16B62ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40542BAF-D558-4E18-96BA-28D0F16B62ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40542BAF-D558-4E18-96BA-28D0F16B62ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40542BAF-D558-4E18-96BA-28D0F16B62ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3E93BC71-09F7-4741-B7C0-D8C2C773F68D}
+	EndGlobalSection
+EndGlobal
