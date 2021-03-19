@@ -58,7 +58,7 @@ namespace Hopex.SDK.Core.Invoker.HttpClients
 
             using (var request = new HttpRequestMessage(HttpMethod.Get, QueryHelpers.AddQueryString(apiUrl, AddCommonParas(paras))))
             {
-                BuildHead(request, GET_METHOD, apiUrl, JsonConvert.SerializeObject(paras), isSign, apiKey, apiSecret);
+                BuildHead(request, GET_METHOD, apiUrl, JsonConvert.SerializeObject(null), isSign, apiKey, apiSecret);
 
                 if (!string.IsNullOrEmpty(host)) _client.BaseAddress = new Uri(host);
                 
